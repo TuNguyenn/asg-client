@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 
-import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,14 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light">
-      <body
-        className={cn(
-          "grainy flex min-h-screen flex-col font-sans antialiased",
-          GeistSans.className,
-        )}
-      >
+    <html lang="en">
+      <body className="bg-[#F0ECE4]">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

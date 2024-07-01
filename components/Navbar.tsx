@@ -8,94 +8,78 @@ import { buttonVariants } from "@/components/ui/button";
 import { MobileNav } from "@/components/MobileNav";
 
 const Navbar = () => {
-  // Replace with your auth of choice, e.g. Clerk: const { userId } = auth();
-  const isUserSignedIn = false;
-
   return (
     <nav
       className={cn(
-        "sticky h-14 inset-x-0 top-0 z-30 border-b border-gray-200  bg-white/40 backdrop-blur-lg transition-all"
+        "sticky inset-x-0 top-0 z-30 w-full h-14 border-b border-gray-200  bg-white/40 backdrop-blur-lg transition-all",
       )}
     >
       <MaxWidthWrapper>
-        <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link
-            href="/"
-            className="flex z-40 justify-center items-center gap-1"
-          >
-            <Image
-              src="/logo.png"
-              alt="convo logo"
-              width={50}
-              height={50}
-              quality={100}
-              className="w-7 h-7"
-            />
-            <span className="text-2xl font-semibold">Convo</span>
-          </Link>
-          <div className="flex gap-1 sm:gap-4 items-center">
-            {!isUserSignedIn ? (
-              <MobileNav />
-            ) : (
+        <div className="flex h-14 items-center w-full justify-between border-b border-zinc-200">
+          <div className="hidden sm:flex items-center gap-1 sm:gap-4">
+            <Link
+              href="/"
+              className="z-40 flex items-center justify-center gap-1"
+            >
+              <Image
+                src="/logo.svg"
+                alt="asg logo"
+                width={150}
+                height={150}
+                quality={100}
+                className="h-150 w-150"
+              />
+            </Link>
+            <Link
+              href="/pricing"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              Nhiệm vụ
+            </Link>
+            <Link
+              href="/pricing"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              Sự kiện
+            </Link>
+            <Link
+              href="/pricing"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              Khảo sát
+            </Link>
+            <Link
+              href="/pricing"
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+              })}
+            >
+              Liên hệ
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-1 sm:gap-4">
+            <MobileNav />
+            <div className="hidden items-center space-x-4 sm:flex">
               <Link
                 className={buttonVariants({
                   size: "sm",
-                  className: "sm:hidden mr-3",
                 })}
-                href="/dashboard"
+                href="/sign-up"
               >
-                Dashboard
+                Get started
               </Link>
-            )}
-
-            <div className="hidden items-center space-x-4 sm:flex">
-              {!isUserSignedIn ? (
-                <>
-                  <Link
-                    href="/pricing"
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                  >
-                    Pricing
-                  </Link>
-                  <Link
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                    href="/sign-in"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    className={buttonVariants({
-                      size: "sm",
-                    })}
-                    href="/sign-up"
-                  >
-                    Get started
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    className={buttonVariants({
-                      size: "sm",
-                    })}
-                    href="/dashboard"
-                  >
-                    Dashboard
-                  </Link>
-                </>
-              )}
             </div>
-
-            {/* User profile mockup below, e.g using Clerk: <UserButton afterSignOutUrl="/" /> */}
-            {isUserSignedIn && (
-              <div className="bg-emerald-600 border-2 border-black shadow-lg rounded-full w-10 h-10"></div>
-            )}
           </div>
         </div>
       </MaxWidthWrapper>
